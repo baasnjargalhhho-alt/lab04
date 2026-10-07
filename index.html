@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Лаборатори 04: Азтай савар — Flexbox ба Grid</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="brand">
+        <div class="brand-icon">🐾</div>
+        <div>
+          <h1>Азтай савар</h1>
+          <p>Амьтанд хайртай гэр бүлийг холбоно</p>
+        </div>
+      </div>
+      <div class="header-badge">LAB 04</div>
+    </div>
+  </header>
+
+  <nav class="main-nav" aria-label="Үндсэн цэс">
+    <ul class="nav-list">
+      <li><a href="#home">Нүүр</a></li>
+      <li><a href="#pets">Амьтад</a></li>
+      <li><a href="#anket">Анкет</a></li>
+      <li><a href="#tips">Зөвлөмж</a></li>
+      <li><a href="#contact">Холбоо барих</a></li>
+    </ul>
+  </nav>
+
+  <main class="page-layout">
+
+    <article class="main-content">
+
+      <section class="hero-section" id="home">
+        <div class="hero-text">
+          <span class="eyebrow"> Хайртай гэр бүлдээ шинэ найз</span>
+          <h2>Тэжээвэр амьтанд шинэ гэр хайцгаая </h2>
+          <p>Доорх мэдээллээс өөрт тохирох амьтнаа сонгоод үрчлэлтийн анкет бөглөнө үү.</p>
+          <a class="hero-button" href="#anket">Анкет бөглөх →</a>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <span>🐶</span><span>🐱</span><span>🐰</span>
+        </div>
+      </section>
+
+      <section class="pet-showcase" id="pets">
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow">🐾 Манай бяцхан найзууд</span>
+            <h2>Үрчлүүлэх боломжтой амьтад</h2>
+          </div>
+          <p>3 баганатай CSS Grid layout</p>
+        </div>
+
+        <div class="pet-grid">
+          <article class="pet-card">
+            <div class="pet-emoji pink">🐶</div>
+            <div class="pet-card-body">
+              <h3>Бонди</h3>
+              <p>2 настай · Эр · Нохой</p>
+              <span class="pet-tag">Нөхөрсөг</span>
+            </div>
+          </article>
+
+          <article class="pet-card">
+            <div class="pet-emoji blue">🐱</div>
+            <div class="pet-card-body">
+              <h3>Мими</h3>
+              <p>1 настай · Эм · Муур</p>
+              <span class="pet-tag">Тайван</span>
+            </div>
+          </article>
+
+          <article class="pet-card">
+            <div class="pet-emoji yellow">🐰</div>
+            <div class="pet-card-body">
+              <h3>Цас</h3>
+              <p>8 сартай · Эр · Туулай</p>
+              <span class="pet-tag">Хөөрхөн</span>
+            </div>
+          </article>
+
+          <article class="pet-card">
+            <div class="pet-emoji blue">🐕</div>
+            <div class="pet-card-body">
+              <h3>Лаки</h3>
+              <p>3 настай · Эр · Нохой</p>
+              <span class="pet-tag">Идэвхтэй</span>
+            </div>
+          </article>
+
+          <article class="pet-card">
+            <div class="pet-emoji pink">🐈</div>
+            <div class="pet-card-body">
+              <h3>Сувд</h3>
+              <p>2 настай · Эм · Муур</p>
+              <span class="pet-tag">Эелдэг</span>
+            </div>
+          </article>
+
+          <article class="pet-card">
+            <div class="pet-emoji yellow">🐹</div>
+            <div class="pet-card-body">
+              <h3>Бөмбөө</h3>
+              <p>6 сартай · Эр · Хулгана</p>
+              <span class="pet-tag">Жижигхэн</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="anket">
+
+        <h2>Гэрийн тэжээвэр амьтан үрчлэхийг хүсэгчийн нэгдсэн анкет</h2>
+
+        <p>
+          Энэхүү анкет нь үрчлэгдэх амьтныг хайр дүүрэн, аюулгүй,
+          санхүүгийн болон эрх зүйн чадамжтай гэр бүлд очиход туслах зорилготой.
+          Мэдээллийг үнэн зөв, гүйцэд бөглөнө үү.
+        </p>
+
+        <div id="successMessage" class="success-message" role="status" aria-live="polite">
+          <div class="success-icon">✓</div>
+          <div>
+            <strong>Анкет амжилттай илгээгдлээ! 🎉</strong>
+            <span>Таны оруулсан мэдээллийг хүлээн авлаа.</span>
+          </div>
+          <button type="button" class="success-close" aria-label="Хаах">×</button>
+        </div>
+
+        <form id="adoptionForm" action="#" method="POST" enctype="multipart/form-data">
+
+          <fieldset>
+            <legend>1. Үрчлэгчийн дэлгэрэнгүй мэдээлэл</legend>
+
+            <p>
+              <label for="fullname">Бүтэн нэр (Овог, нэр):</label><br>
+              <input type="text" id="fullname" name="fullname"
+                     placeholder="Б. Бат" required minlength="2">
+            </p>
+
+            <p>
+              <label for="register">Регистрийн дугаар:</label><br>
+              <input type="text" id="register" name="register"
+                     placeholder="УБ12345678"
+                     required
+                     pattern="[А-ЯӨҮЁа-яөүё]{2}[0-9]{8}"
+                     title="2 кирилл үсэг, 8 тоо. Жишээ: УБ12345678">
+            </p>
+
+            <p>
+              <label for="dob">Төрсөн огноо:</label><br>
+              <input type="date" id="dob" name="dob" required>
+            </p>
+
+            <p>
+              <label for="age">Нас:</label><br>
+              <input type="number" id="age" name="age"
+                     min="18" max="100" required>
+              <br>
+              <small>
+                Үрчлэгч нь 18 (эсвэл 21) нас хүрсэн,
+                эрх зүйн бүрэн чадамжтай иргэн байх шаардлагатай.
+              </small>
+            </p>
+
+            <p>
+              <label for="idcopy">Иргэний үнэмлэхний хуулбар хавсаргах:</label><br>
+              <input type="file" id="idcopy" name="idcopy"
+                     accept="image/*,.pdf" required>
+            </p>
+
+          </fieldset>
+
+
+          <fieldset>
+            <legend>Холбоо барих мэдээлэл</legend>
+
+            <p>
+              <label for="phone">Үндсэн утасны дугаар:</label><br>
+              <input type="tel" id="phone" name="phone"
+                     pattern="[0-9]{8}"
+                     placeholder="88112233"
+                     required
+                     title="8 оронтой тоо оруулна уу">
+            </p>
+
+            <p>
+              <label for="emergency_name">
+                Яаралтай үед холбоо барих хүний нэр:
+              </label><br>
+              <input type="text" id="emergency_name"
+                     name="emergency_name"
+                     required minlength="2">
+            </p>
+
+            <p>
+              <label for="emergency_phone">
+                Яаралтай үед холбоо барих хүний утас:
+              </label><br>
+              <input type="tel" id="emergency_phone"
+                     name="emergency_phone"
+                     pattern="[0-9]{8}"
+                     placeholder="99112233"
+                     required
+                     title="8 оронтой тоо оруулна уу">
+            </p>
+
+            <p>
+              <label for="email">Цахим шуудан (Email):</label><br>
+              <input type="email" id="email" name="email"
+                     placeholder="example@gmail.com" required>
+            </p>
+
+            <p>
+              <label for="address">
+                Гэрийн хаяг (Оршин суугаа хаяг):
+              </label><br>
+              <textarea id="address" name="address"
+                        rows="3" required minlength="10"></textarea>
+            </p>
+
+          </fieldset>
+
+
+          <fieldset>
+            <legend>Ажил эрхлэлт ба санхүүгийн чадамж</legend>
+
+            <p>
+              <label for="employment">
+                Одоогийн ажил эрхлэлтийн байдал:
+              </label><br>
+
+              <select id="employment" name="employment" required>
+                <option value="">-- Сонгоно уу --</option>
+                <option value="private">Хувийн хэвшилд ажилладаг</option>
+                <option value="public">Төрийн албан хаагч</option>
+                <option value="selfemployed">
+                  Хувиараа бизнес эрхлэгч
+                </option>
+                <option value="student">Оюутан</option>
+                <option value="unemployed">Ажилгүй</option>
+              </select>
+            </p>
+
+            <p>
+              <label for="company">
+                Албан байгууллагын нэр, таны албан тушаал:
+              </label><br>
+              <input type="text" id="company" name="company">
+            </p>
+
+            <p>
+              <label for="workphone">
+                Ажлын газрын утасны дугаар:
+              </label><br>
+              <input type="tel" id="workphone" name="workphone"
+                     pattern="[0-9]{8}"
+                     placeholder="70112233"
+                     title="8 оронтой тоо оруулна уу">
+            </p>
+
+          </fieldset>
+
+
+          <fieldset>
+            <legend>Гадаад зорчих хөдөлгөөн</legend>
+
+            <p>
+              Та ойрын 1–2 жилийн хугацаанд гадаад улс руу
+              урт хугацаагаар сурах, ажиллахаар явах төлөвлөгөө бий юу?
+            </p>
+
+            <p>
+              <input type="radio" id="abroad_yes"
+                     name="abroad" value="yes" required>
+              <label for="abroad_yes">Тийм</label>
+
+              <input type="radio" id="abroad_no"
+                     name="abroad" value="no">
+              <label for="abroad_no">Үгүй</label>
+            </p>
+
+            <p>
+              <label for="abroad_pet">
+                Хэрэв тийм бол амьтныг хэрхэх вэ?
+              </label><br>
+              <input type="text" id="abroad_pet" name="abroad_pet">
+            </p>
+
+          </fieldset>
+
+
+          <fieldset>
+            <legend>2. Амьдрах орчин нөхцөл</legend>
+
+            <p>
+              <label for="housing">
+                Та ямар төрлийн орон сууцанд амьдардаг вэ?
+              </label><br>
+
+              <select id="housing" name="housing" required>
+                <option value="">-- Сонгоно уу --</option>
+                <option value="apartment">
+                  Нийтийн байр / Байшин (Орон сууц)
+                </option>
+                <option value="house">Хашаа байшин</option>
+                <option value="ger">Гэр</option>
+                <option value="other">Бусад</option>
+              </select>
+            </p>
+
+            <p>Та тухайн орон сууцны:</p>
+
+            <p>
+              <input type="radio" id="owner"
+                     name="ownership" value="owner" required>
+              <label for="owner">Өмчлөгч (Өөрийн байр)</label>
+
+              <input type="radio" id="renter"
+                     name="ownership" value="renter">
+              <label for="renter">Түрээслэгч (Түрээсийн байр)</label>
+            </p>
+
+            <p>
+              Хэрэв түрээсийн байр бол байрны эзэн
+              амьтан тэжээхийг зөвшөөрсөн үү?
+            </p>
+
+            <p>
+              <input type="radio" id="landlord_yes"
+                     name="landlord" value="yes">
+              <label for="landlord_yes">Тийм</label>
+
+              <input type="radio" id="landlord_no"
+                     name="landlord" value="no">
+              <label for="landlord_no">Үгүй</label>
+            </p>
+
+            <p>
+              <label for="living_with">
+                Та гэр бүлээрээ амьдардаг уу, эсвэл ганцаараа юу?
+              </label><br>
+
+              <select id="living_with" name="living_with" required>
+                <option value="">-- Сонгоно уу --</option>
+                <option value="family">Гэр бүлээрээ</option>
+                <option value="alone">Ганцаараа</option>
+              </select>
+            </p>
+
+            <p>
+              <label for="family_count">
+                Гэр бүлийн гишүүдийн тоо:
+              </label><br>
+              <input type="number" id="family_count"
+                     name="family_count"
+                     min="1" max="30" required>
+            </p>
+
+            <p>
+              <label for="children">
+                Хүүхэд байгаа эсэх, байгаа бол нас:
+              </label><br>
+              <input type="text" id="children" name="children"
+                     placeholder="Жишээ: 2 хүүхэд, 5 ба 9 настай">
+            </p>
+
+            <p>
+              Гэр бүлийн бүх гишүүд амьтан үрчлэн авахыг зөвшөөрсөн үү?
+            </p>
+
+            <p>
+              <input type="radio" id="consent_yes"
+                     name="family_consent" value="yes" required>
+              <label for="consent_yes">Тийм</label>
+
+              <input type="radio" id="consent_no"
+                     name="family_consent" value="no">
+              <label for="consent_no">Үгүй</label>
+            </p>
+
+            <p>
+              Гэр бүлийн гишүүд дунд амьтны үс,
+              шүлснээс харшилтай хүн бий юу?
+            </p>
+
+            <p>
+              <input type="radio" id="allergy_yes"
+                     name="allergy" value="yes" required>
+              <label for="allergy_yes">Тийм</label>
+
+              <input type="radio" id="allergy_no"
+                     name="allergy" value="no">
+              <label for="allergy_no">Үгүй</label>
+            </p>
+
+          </fieldset>
+
+
+          <fieldset>
+            <legend>
+              3. Амьдрах орчны зураг хавсаргах хэсэг (заавал бөглөх)
+            </legend>
+
+            <p>
+              <small>
+                Амьтан очиж амьдрах орчин аюулгүй, тохиромжтой эсэхийг
+                нягтлах зорилгоор дараах зургуудыг хавсаргана уу.
+              </small>
+            </p>
+
+            <p>
+              <label for="photo_inside">
+                Гэрийн доторх ерөнхий зураг
+                (амьтан байрлах үндсэн хэсэг):
+              </label><br>
+              <input type="file" id="photo_inside"
+                     name="photo_inside"
+                     accept="image/*" required>
+            </p>
+
+            <p>
+              <label for="photo_yard">
+                Хашаа байшин бол: хашааны үүд,
+                хайс хамгаалалтын бүрэн бүтэн байдлыг харуулсан зураг:
+              </label><br>
+              <input type="file" id="photo_yard"
+                     name="photo_yard"
+                     accept="image/*">
+            </p>
+
+            <p>
+              <label for="photo_corner">
+                Амьтанд зориулж бэлдсэн булан/хэвтэр,
+                хоолны аяга зэргийн зураг (бэлдсэн бол):
+              </label><br>
+              <input type="file" id="photo_corner"
+                     name="photo_corner"
+                     accept="image/*">
+            </p>
+
+          </fieldset>
+
+
+          <fieldset>
+            <legend>4. Тэжээвэр амьтан тэжээж байсан туршлага</legend>
+
+            <p>
+              <label for="exp_before">
+                Та өмнө нь амьтан тэжээж байсан уу?
+                Хэрэв тийм бол ямар амьтан, хэдэн жил тэжээсэн бэ?
+              </label><br>
+
+              <textarea id="exp_before"
+                        name="exp_before"
+                        rows="3"
+                        required></textarea>
+            </p>
+
+            <p>
+              <label for="exp_current">
+                Одоо танайд тэжээвэр амьтан байгаа юу?
+                (Байгаа бол үүлдэр, нас, хүйс, ариутгасан эсэх):
+              </label><br>
+
+              <textarea id="exp_current"
+                        name="exp_current"
+                        rows="3"
+                        required></textarea>
+            </p>
+
+            <p>
+              <label for="exp_past">
+                Өмнө нь тэжээж байсан амьтан тань одоо хаана байгаа вэ?
+                (Хөгширч үхсэн, хүнд өгсөн г.м):
+              </label><br>
+
+              <textarea id="exp_past"
+                        name="exp_past"
+                        rows="3"></textarea>
+            </p>
+
+          </fieldset>
+
+
+          <fieldset>
+            <legend>5. Үрчлэн авахыг хүсэж буй амьтны талаар</legend>
+
+            <p>Та ямар амьтан үрчлэхийг хүсэж байна вэ?</p>
+
+            <p>
+              <input type="radio" id="pet_dog"
+                     name="pet_type" value="dog" required>
+              <label for="pet_dog">Нохой</label>
+
+              <input type="radio" id="pet_cat"
+                     name="pet_type" value="cat">
+              <label for="pet_cat">Муур</label>
+
+              <input type="radio" id="pet_other"
+                     name="pet_type" value="other">
+              <label for="pet_other">Бусад</label>
+
+              <input type="text" id="pet_other_text"
+                     name="pet_other_text"
+                     aria-label="Бусад амьтны төрөл">
+            </p>
+
+            <p>
+              <label for="pet_details">
+                Хүсэж буй амьтны нас, хүйс, үүлдэр
+                (тодорхой амьтан зааж байгаа бол нэр):
+              </label><br>
+
+              <input type="text" id="pet_details"
+                     name="pet_details" required>
+            </p>
+
+            <p>Та ямар зорилгоор амьтан үрчлэн авч байгаа вэ?</p>
+
+            <p>
+              <input type="radio" id="purpose_companion"
+                     name="purpose" value="companion" required>
+              <label for="purpose_companion">
+                Хань болох / Гэр бүлийн гишүүн
+              </label>
+
+              <input type="radio" id="purpose_guard"
+                     name="purpose" value="guard">
+              <label for="purpose_guard">Харуул хамгаалалт</label>
+
+              <input type="radio" id="purpose_child"
+                     name="purpose" value="for_child">
+              <label for="purpose_child">Хүүхдэдээ авч өгөх</label>
+
+              <input type="radio" id="purpose_other"
+                     name="purpose" value="other">
+              <label for="purpose_other">Бусад</label>
+            </p>
+
+            <p>
+              Та тухайн амьтныг хаана байлгах вэ?
+              (Олон сонголт хийж болно)
+            </p>
+
+            <p>
+              <input type="checkbox" id="place_inside"
+                     name="place" value="inside">
+              <label for="place_inside">Гэрт дотор</label>
+
+              <input type="checkbox" id="place_yard_tied"
+                     name="place" value="yard_tied">
+              <label for="place_yard_tied">Хашаанд (уяатай)</label>
+
+              <input type="checkbox" id="place_yard_free"
+                     name="place" value="yard_free">
+              <label for="place_yard_free">Хашаанд (уяагүй)</label>
+
+              <input type="checkbox" id="place_door"
+                     name="place" value="outside_door">
+              <label for="place_door">Гэрийн гадна үүдэнд</label>
+            </p>
+
+          </fieldset>
+
+
+          <fieldset>
+            <legend>6. Асран хамгаалах ба хариуцлага</legend>
+
+            <p>
+              <label for="hours_alone">
+                Та амьтныг өдөрт хэдэн цаг ганцааранг нь үлдээх вэ?
+              </label><br>
+
+              <input type="number" id="hours_alone"
+                     name="hours_alone"
+                     min="0" max="24" required>
+              цаг
+            </p>
+
+            <p>
+              <label for="travel_plan">
+                Хэрэв та аялал зугаалгаар явах эсвэл
+                хөдөө орон нутаг руу яаралтай явах болвол
+                амьтнаа хаана үлдээх вэ?
+              </label><br>
+
+              <textarea id="travel_plan"
+                        name="travel_plan"
+                        rows="3"
+                        required
+                        minlength="5"></textarea>
+            </p>
+
+            <p>
+              Амьтан үрчлүүлэгч байгууллага/эзэн таныг
+              амьтнаа хэрхэн тэжээж байгаатай холбоотой эргэн холбоо барьж,
+              зураг/бичлэг ирүүлж байхыг шаардвал зөвшөөрөх үү?
+            </p>
+
+            <p>
+              <input type="radio" id="followup_yes"
+                     name="followup" value="yes" required>
+              <label for="followup_yes">Тийм</label>
+
+              <input type="radio" id="followup_no"
+                     name="followup" value="no">
+              <label for="followup_no">Үгүй</label>
+            </p>
+
+            <p>
+              Ирээдүйд таны амьдралд өөрчлөлт гарвал
+              (гэрлэлт, хүүхэд төрөх, нүүх г.м) амьтнаа хаяхгүй,
+              үргэлжлүүлэн хариуцлагатай тэжээж чадах уу?
+            </p>
+
+            <p>
+              <input type="radio" id="future_yes"
+                     name="future" value="yes" required>
+              <label for="future_yes">Тийм</label>
+
+              <input type="radio" id="future_no"
+                     name="future" value="no">
+              <label for="future_no">Үгүй</label>
+            </p>
+
+          </fieldset>
+
+
+          <fieldset>
+            <legend>Баталгаажуулалт</legend>
+
+            <p>
+              <input type="checkbox"
+                     id="confirm"
+                     name="confirm"
+                     value="yes"
+                     required>
+
+              <label for="confirm">
+                Дээрх мэдээллийг үнэн зөв бөглөсөн болно.
+              </label>
+            </p>
+
+            <p>
+              <label for="filled_date">
+                Анкет бөглөсөн огноо:
+              </label><br>
+
+              <input type="date"
+                     id="filled_date"
+                     name="filled_date"
+                     required>
+            </p>
+
+            <p>
+              <label for="signature">
+                Үрчлэгчийн гарын үсэг
+                (бүтэн нэрээ бичнэ үү):
+              </label><br>
+
+              <input type="text"
+                     id="signature"
+                     name="signature"
+                     required
+                     minlength="2">
+            </p>
+
+          </fieldset>
+
+        <section>
+           <h2>Бусад сонирхож буй зүйлс</h2>
+           <ul>
+            <li>Нохой, муурны зан төлөв, сургалт</li>
+            <li>Амьтны эрүүл мэнд, вакцин</li>
+            <li>Хаягдсан амьтныг аврах, сайн дурын ажил</li>
+           </ul>
+           <p>
+              Та дээрх сэдвүүдийн талаар сонирхож байвал биечлэн уулзалт хийнэ үү.
+        </p>
+        </section>
+
+
+          <section>
+            <h2>Анхаарах хүснэгт: вакцин ба эмчийн үзлэг</h2>
+
+            <p>
+              Доорх хуваарь нь ерөнхий жишээ юм.
+              Яг тохирох хугацааг малын эмчээс лавлана уу.
+            </p>
+
+            <table>
+              <caption>
+                Гөлөг, зулзагын вакцин ба үзлэгийн хуваарь
+              </caption>
+
+              <thead>
+                <tr>
+                  <th>Насны хугацаа</th>
+                  <th>Амьтан</th>
+                  <th>Хийх зүйл</th>
+                  <th>Дараагийн үзлэг</th>
+                </tr>
+              </thead>
+
+              <tbody>
+
+                <tr>
+                  <td>6–8 долоо хоног</td>
+                  <td>Нохой</td>
+                  <td>Анхны цогц вакцин, туулга</td>
+                  <td>21 хоногийн дараа</td>
+                </tr>
+
+                <tr>
+                  <td>10–12 долоо хоног</td>
+                  <td>Нохой</td>
+                  <td>Хоёр дахь цогц вакцин</td>
+                  <td>21 хоногийн дараа</td>
+                </tr>
+
+                <tr>
+                  <td>12–16 долоо хоног</td>
+                  <td>Нохой</td>
+                  <td>Галзуугийн вакцин, гурав дахь цогц вакцин</td>
+                  <td>12 сарын дараа</td>
+                </tr>
+
+                <tr>
+                  <td>8 долоо хоног</td>
+                  <td>Муур</td>
+                  <td>Анхны цогц вакцин, туулга</td>
+                  <td>28 хоногийн дараа</td>
+                </tr>
+
+                <tr>
+                  <td>12 долоо хоног</td>
+                  <td>Муур</td>
+                  <td>Хоёр дахь цогц вакцин</td>
+                  <td>28 хоногийн дараа</td>
+                </tr>
+
+                <tr>
+                  <td>16 долоо хоног</td>
+                  <td>Муур</td>
+                  <td>Галзуугийн вакцин, гурав дахь цогц вакцин</td>
+                  <td>12 сарын дараа</td>
+                </tr>
+
+                <tr>
+                  <td>6 сар</td>
+                  <td>Нохой, муур</td>
+                  <td>Эрүүл мэндийн үзлэг, ариутгалын зөвлөгөө</td>
+                  <td>6 сарын дараа</td>
+                </tr>
+
+                <tr>
+                  <td>Жил бүр</td>
+                  <td>Нохой, муур</td>
+                  <td>Давтан вакцин, ерөнхий үзлэг, туулга</td>
+                  <td>12 сарын дараа</td>
+                </tr>
+
+              </tbody>
+            </table>
+
+          </section>
+
+
+          <button type="submit">Анкет илгээх</button>
+          <button type="reset">Дахин эхлүүлэх</button>
+
+        </form>
+
+      </section>
+      <section class="info-section" id="tips">
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow">💡 Хэрэгтэй мэдээлэл</span>
+            <h2>Үрчлэлтийн зөвлөмж</h2>
+          </div>
+        </div>
+
+        <div class="tips-grid">
+          <article class="tip-card">
+            <span class="tip-number">01</span>
+            <h3>Цаг гаргах</h3>
+            <p>Амьтны хооллолт, тоглох, салхилуулах болон асаргаанд өдөр бүр тогтмол цаг гаргана.</p>
+          </article>
+
+          <article class="tip-card">
+            <span class="tip-number">02</span>
+            <h3>Зардлаа тооцох</h3>
+            <p>Хоол хүнс, вакцин, эмчилгээ болон бусад хэрэгцээний зардлыг урьдчилан төлөвлөнө.</p>
+          </article>
+
+          <article class="tip-card">
+            <span class="tip-number">03</span>
+            <h3>Орчноо бэлтгэх</h3>
+            <p>Амьтан аюулгүй, цэвэр, тухтай орчинд амьдрах нөхцөлийг урьдчилан бүрдүүлнэ.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="final-note">
+        <div class="note-icon">🐾</div>
+        <div>
+          <h2>Сануулах нь</h2>
+          <p>Амьтан үрчлэх нь түр зуурын сонголт биш, олон жилийн хариуцлага юм.</p>
+        </div>
+      </section>
+
+    </article>
+
+
+    <aside class="sidebar">
+      <section class="sidebar-card">
+        <div class="sidebar-icon">💡</div>
+        <h2>Үрчлэлтийн зөвлөмж</h2>
+        <ul>
+          <li>Амьтанд өдөр бүр хангалттай цаг гаргах.</li>
+          <li>Хоол, эмчилгээний зардлаа урьдчилан тооцох.</li>
+          <li>Гэр бүлийн бүх гишүүдийн зөвшөөрлийг авах.</li>
+          <li>Аюулгүй, тохиромжтой орчин бэлтгэх.</li>
+        </ul>
+      </section>
+
+      <section class="sidebar-card mini-contact">
+        <div class="sidebar-icon">💌</div>
+        <h2>Холбоо барих</h2>
+        <p><strong>Утас:</strong> 8811-2233</p>
+        <p><strong>Email:</strong> aztaisavar@example.com</p>
+        <p><strong>Цаг:</strong> 10:00–18:00</p>
+      </section>
+
+    </aside>
+
+
+  </main>
+
+
+  <footer class="site-footer" id="contact">
+    <div class="footer-content">
+      <div>
+        <strong>🐾 Азтай савар ТББ.</strong>
+        <p>Амьтан бүрт хайртай гэр бүл хэрэгтэй.</p>
+      </div>
+      <p>© 2026 Lab 04 · Flexbox + CSS Grid</p>
+    </div>
+  </footer>
+
+  <script>
+    const form = document.getElementById("adoptionForm");
+    const successMessage = document.getElementById("successMessage");
+    const closeButton = document.querySelector(".success-close");
+    let successTimer;
+
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+
+      successMessage.classList.add("show");
+      successMessage.scrollIntoView({ behavior: "smooth", block: "center" });
+
+      // 3 минутын дараа амжилтын мэдэгдлийг автоматаар арилгана.
+      clearTimeout(successTimer);
+      successTimer = setTimeout(function () {
+        successMessage.classList.remove("show");
+      }, 3 * 60 * 1000);
+    });
+
+    closeButton.addEventListener("click", function () {
+      successMessage.classList.remove("show");
+      clearTimeout(successTimer);
+    });
+  </script>
+
+</body>
+</html>
+
+ 
