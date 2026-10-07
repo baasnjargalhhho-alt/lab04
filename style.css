@@ -183,9 +183,9 @@ a { color: inherit; }
 }
 
 .pet-grid {
-  display: grid;                         /* REQUIRED: CSS Grid */
-  grid-template-columns: repeat(3, minmax(0, 1fr)); /* 3 columns */
-  gap: 16px;                             /* REQUIRED */
+  display: grid;                         
+  grid-template-columns: repeat(3, minmax(0, 1fr)); 
+  gap: 16px;
 }
 
 .pet-card {
@@ -229,7 +229,7 @@ a { color: inherit; }
   font-weight: 800;
 }
 
-/* ===== EXISTING LAB 03 FORM, RE-STYLED ===== */
+
 #anket {
   position: relative;
   background: rgba(255,255,255,.96);
@@ -342,7 +342,7 @@ button[type="submit"] { background: linear-gradient(90deg, #df6391, #76b5df); co
 button[type="reset"] { background: #eaf5fc; color: #547991; border: 2px solid #bfdef1; }
 button:hover { transform: translateY(-2px); }
 
-/* ===== SUCCESS MESSAGE ===== */
+
 .success-message {
   display: none;
   align-items: center;
@@ -369,7 +369,7 @@ button:hover { transform: translateY(-2px); }
 }
 @keyframes successPop { from { opacity: 0; transform: translateY(-7px); } to { opacity: 1; transform: translateY(0); } }
 
-/* ===== SIDEBAR ===== */
+
 .sidebar {
   display: flex;
   flex-direction: column;
@@ -394,7 +394,7 @@ button:hover { transform: translateY(-2px); }
 .quick-note { background: linear-gradient(135deg, #fff1f7, #eef8ff); border-color: #efaac2; }
 .quick-note h2 { color: #cd557f; }
 
-/* ===== FOOTER ===== */
+
 .site-footer {
   padding: 23px 15px;
   background: linear-gradient(90deg, #d65d88, #6ea9d2);
@@ -412,7 +412,7 @@ button:hover { transform: translateY(-2px); }
 
 .footer-content p { margin: 2px 0 0; opacity: .9; font-size: 13px; }
 
-/* ===== RESPONSIVE ===== */
+
 @media (max-width: 900px) {
   .page-layout { grid-template-columns: 1fr; }
   .sidebar { position: static; display: grid; grid-template-columns: repeat(3, 1fr); }
@@ -435,7 +435,7 @@ button:hover { transform: translateY(-2px); }
 }
 
 
-/* ===== STANDARD ANCHOR TARGETS ===== */
+
 #home,
 #pets,
 #anket,
@@ -444,7 +444,7 @@ button:hover { transform: translateY(-2px); }
   scroll-margin-top: 78px;
 }
 
-/* ===== FINAL INFORMATION SECTIONS ===== */
+
 .info-section {
   margin: 24px 0;
   padding: 25px;
